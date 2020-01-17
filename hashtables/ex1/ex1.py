@@ -17,11 +17,13 @@ from hashtables import (HashTable,
 # _NOTE:_ When calling `hash_table_retrieve` with a key that doesn't exist in the hash table, `hash_table_retrieve` will return `None`.
 def get_indices_of_item_weights(weights, length, limit):
     ht = HashTable(16)
+    #add the weights as the keys and index as the value to hashtable
     for i in range(length):
         hash_table_insert(ht, weights[i], i )
-    
+    #loop through hash table to see which key == limit-weight
     for i in range(length):
         s = hash_table_retrieve(ht, limit-weights[i])
+        #arange order so 0 index is bigger value
         if s is not None:
             if s > i:
                 return(s,i)
